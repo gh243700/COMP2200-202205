@@ -36,8 +36,4 @@ int copy_column(const color_t color, const unsigned int src, const unsigned int 
 
 void print_full_board(void);
 
-
-
-int get_stone_count(const color_t color, const unsigned int row, const unsigned int col, const int row_increment, const int col_increment);
-
 #endif

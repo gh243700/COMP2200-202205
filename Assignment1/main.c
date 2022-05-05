@@ -78,6 +78,16 @@ int main(void)
     print_full_board();
     
     
-    printf("\n----------------testfin-----------\n");
+
+
+    assert(insert_row(COLOR_BLACK, 1) == 1); 
+    print_full_board();
+
+    assert(insert_row(COLOR_BLACK, 16) == 0); 
+
+    assert(insert_column(COLOR_BLACK, 1) == 1); 
+    print_full_board();
+
+    printf("\n----------------test1fin-----------\n");
     return 0;
 }
