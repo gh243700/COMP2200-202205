@@ -16,7 +16,8 @@ int get_index_of(const int numbers[], const size_t element_count, const int num)
 }
 
 
-int get_last_index_of(const int numbers[], const size_t element_count, const int num) {
+int get_last_index_of(const int numbers[], const size_t element_count, const int num) 
+{
     
     int i; 
     const int* ptr = numbers + element_count - 1;
