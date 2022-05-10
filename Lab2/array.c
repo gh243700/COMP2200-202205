@@ -44,7 +44,7 @@ int get_max_index(const int numbers[], const size_t element_count)
 
     max_ptr = numbers;
 
-   for (i = 0; i < element_count; i++) {
+    for (i = 0; i < element_count; i++) {
         if (*ptr > *max_ptr) { 
             max_ptr = ptr; 
         }
@@ -66,7 +66,7 @@ int get_min_index(const int numbers[], const size_t element_count)
 
     min_ptr = numbers;  
 
-   for (i = 0; i < element_count; i++) {
+    for (i = 0; i < element_count; i++) {
         if (*ptr < *min_ptr) { 
             min_ptr = ptr; 
         }
@@ -137,7 +137,7 @@ int remove_at(int numbers[], const size_t element_count, const size_t index)
     
     ptr += index;
     for (i = index; i < element_count - 1; i++) {
-       *ptr = *(ptr + 1);
+        *ptr = *(ptr + 1);
         ptr++;
     }
     *ptr = INT_MIN;
