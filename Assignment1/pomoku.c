@@ -156,6 +156,52 @@ int insert_column(const color_t color, const unsigned int col) {
     return 1;
 }
 
+int remove_row(const color_t color, const unsigned int row) {
+    int* score = get_stone_score(color);
+    int i;
+    int j;
+
+    if (*score < 3 || row >= row_count) {
+        return 0;
+    }
+
+    *score -= 3;
+
+    for(i = row; i < row_count; i++) {
+        for(j = 0; j < col_count; j++) {
+            board[i][j] = board[i + 1][j];
+        }        
+    }
+        
+    row_count--;    
+
+    return 1;
+}
+
+int remove_column(const color_t color, const unsigned int col) {
+    int* score = get_stone_score(color);
+    int i;
+    int j;
+
+    if (*score < 3 || col >= col_count) {
+        return 0;
+    }
+
+   *score -= 3;
+
+    for(i = 0; i < row_count; i++) {
+        for(j = col; j < col_count; j++) {
+            board[i][j] = board[i][j + 1];
+        }        
+    }
+        
+    col_count--;
+
+    return 0;
+}
+
+
+
 
 
 static int* get_stone_score(const color_t color) {
