@@ -1,7 +1,8 @@
 #include "array.h"
 #include <limits.h>
 
-int get_index_of(const int numbers[], const size_t element_count, const int num) {
+int get_index_of(const int numbers[], const size_t element_count, const int num) 
+{
     int i;
     const int* ptr = numbers;
     
@@ -20,7 +21,7 @@ int get_last_index_of(const int numbers[], const size_t element_count, const int
     int i; 
     const int* ptr = numbers + element_count - 1;
     
-    for(i = 0; i < element_count; i++) {
+    for (i = 0; i < element_count; i++) {
         if (*ptr == num) {
             return element_count - i - 1;
         }
@@ -30,7 +31,8 @@ int get_last_index_of(const int numbers[], const size_t element_count, const int
     return -1;
 }
 
-int get_max_index(const int numbers[], const size_t element_count) {
+int get_max_index(const int numbers[], const size_t element_count) 
+{
     int i; 
     const int* max_ptr; 
     const int* ptr = numbers;
@@ -41,7 +43,7 @@ int get_max_index(const int numbers[], const size_t element_count) {
 
     max_ptr = numbers;
 
-   for(i = 0; i < element_count; i++) {
+   for (i = 0; i < element_count; i++) {
         if(*ptr > *max_ptr) { 
             max_ptr = ptr; 
         }
@@ -51,7 +53,8 @@ int get_max_index(const int numbers[], const size_t element_count) {
     return max_ptr - numbers;
 }
 
-int get_min_index(const int numbers[], const size_t element_count) {
+int get_min_index(const int numbers[], const size_t element_count) 
+{
     int i; 
     const int* min_ptr; 
     const int* ptr = numbers;
@@ -62,7 +65,7 @@ int get_min_index(const int numbers[], const size_t element_count) {
 
     min_ptr = numbers;  
 
-   for(i = 0; i < element_count; i++) {
+   for (i = 0; i < element_count; i++) {
         if(*ptr < *min_ptr) { 
             min_ptr = ptr; 
         }
@@ -71,16 +74,17 @@ int get_min_index(const int numbers[], const size_t element_count) {
     return min_ptr - numbers;
 }
 
-int is_all_positive(const int numbers[], const size_t element_count) {
+int is_all_positive(const int numbers[], const size_t element_count) 
+{
     int i;
     const int* ptr = numbers;
 
-    if(element_count == 0) {
+    if (element_count == 0) {
         return FALSE;
     }
 
-    for(i = 0; i < element_count; i++) {
-        if(*ptr++ < 0) { 
+    for (i = 0; i < element_count; i++) {
+        if (*ptr++ < 0) { 
             return FALSE;
         }
     }        
@@ -88,12 +92,13 @@ int is_all_positive(const int numbers[], const size_t element_count) {
     return TRUE;
 }
 
-int has_even(const int numbers[], const size_t element_count) {
+int has_even(const int numbers[], const size_t element_count) 
+{
     int i;   
     const int* ptr = numbers;
   
-    for(i = 0; i < element_count; i++) {
-        if(*ptr++ % 2 == 0) {
+    for (i = 0; i < element_count; i++) {
+        if (*ptr++ % 2 == 0) {
             return TRUE;
         }            
     }
@@ -101,16 +106,17 @@ int has_even(const int numbers[], const size_t element_count) {
     return FALSE;
 }
 
-int insert(int numbers[], const size_t element_count, const int num, const size_t pos) {
+int insert(int numbers[], const size_t element_count, const int num, const size_t pos) 
+{
     int i; 
     int* ptr = numbers;
 
-    if(element_count == 0 || pos > element_count) {
+    if (element_count == 0 || pos > element_count) {
         return FALSE;
     }
     
     ptr += element_count;
-    for(i = pos; i < element_count; i++) {
+    for (i = pos; i < element_count; i++) {
         *ptr = *(ptr - 1);
         ptr--;
     }
@@ -119,16 +125,17 @@ int insert(int numbers[], const size_t element_count, const int num, const size_
     return TRUE;
 }
 
-int remove_at(int numbers[], const size_t element_count, const size_t index) {
+int remove_at(int numbers[], const size_t element_count, const size_t index) 
+{
     int i;
     int* ptr = numbers;
 
-    if(element_count == 0 || element_count <= index) {
+    if (element_count == 0 || element_count <= index) {
         return FALSE;
     }
     
     ptr += index;
-    for( i = index; i < element_count - 1; i++) {
+    for ( i = index; i < element_count - 1; i++) {
        *ptr = *(ptr + 1);
         ptr++;
     }
