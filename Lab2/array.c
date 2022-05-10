@@ -114,7 +114,7 @@ int insert(int numbers[], const size_t element_count, const int num, const size_
         *ptr = *(ptr - 1);
         ptr--;
     }
-    numbers[pos] = num;
+    *ptr = num;
 
     return TRUE;
 }
