@@ -35,6 +35,31 @@ int main(void)
 
 }
 
+{
+    int ary[8] = { 1, 4, -6, -6, 5, INT_MIN, INT_MIN, INT_MIN };
+
+    assert(insert(ary, 5, 10, 3) == 1); /* 1을 반환, ary: [ 1, 4, -6, 10, -6, 5, INT_MIN, INT_MIN ] */
+
+    assert(ary[0] == 1);
+    assert(ary[1] == 4);
+    assert(ary[2] == -6);
+    assert(ary[3] == 10);
+    assert(ary[4] == -6);
+    assert(ary[5] == 5);    
+  
+    assert(insert(ary, 6, 10, 7) == 0); /* 0을 반환 */
+    assert(insert(ary, 6, 11, 6) == 1); /* 1을 반환.  ary: [ 1, 4, -6, 10, -6, 5, 11, INT_MIN ] */
+
+    assert(ary[0] == 1);
+    assert(ary[1] == 4);
+    assert(ary[2] == -6);
+    assert(ary[3] == 10);
+    assert(ary[4] == -6);
+    assert(ary[5] == 5);    
+    assert(ary[6] == 11); 
+    assert(ary[7] == INT_MIN); 
+}
+
 
 {
     int ary[7] = { 1, 4, -6, -6, 5, INT_MIN, INT_MIN };
@@ -45,7 +70,7 @@ int main(void)
     assert(ary[2] == -6);
     assert(ary[3] == 5);
     assert(ary[4] == INT_MIN);
-    assert(remove_at(ary, 4, 5) == 0); /* 0을 반환 */
+    assert(remove_at(ary, 4, 4) == 0); /* 0을 반환 */
 }
 
 

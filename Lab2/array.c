@@ -105,15 +105,16 @@ int insert(int numbers[], const size_t element_count, const int num, const size_
     int i; 
     int* ptr = numbers;
 
-    if(pos > element_count) {
+    if(element_count == 0 || pos > element_count) {
         return FALSE;
     }
-
-    for(i = element_count - 1; i > pos; i--) {
-        *(ptr + i + 1) = *(ptr + i);
-        ptr++;
+    
+    ptr += element_count;
+    for(i = pos; i < element_count; i++) {
+        *ptr = *(ptr - 1);
+        ptr--;
     }
-    ptr[pos] = num;
+    numbers[pos] = num;
 
     return TRUE;
 }
@@ -122,7 +123,7 @@ int remove_at(int numbers[], const size_t element_count, const size_t index) {
     int i;
     int* ptr = numbers;
 
-    if(element_count == 0 || element_count < index) {
+    if(element_count == 0 || element_count <= index) {
         return FALSE;
     }
     
