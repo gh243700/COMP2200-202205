@@ -200,9 +200,95 @@ int remove_column(const color_t color, const unsigned int col) {
     return 0;
 }
 
+int swap_rows(const color_t color, const unsigned int row0, const unsigned int row1)
+{
+    int i; 
+    int* ptr1 = board[row0];
+    int* ptr2 = board[row1];    
+    int* score = get_stone_score(color);
 
+    if (socre < 2 || row0 >= row_count || row1 >= row_count) {
+        return 0;
+    }
 
+    *socre -= 2;
 
+    for (i = 0; i < row_count; i++) {
+        *ptr1 ^= *ptr2;
+        *ptr2 ^= *ptr1;
+        *ptr1 ^= *ptr2;
+        ptr1++;
+        ptr2++;
+    }
+
+    return 1;
+}
+
+int swap_columns(const color_t color, const unsigned int col0, const unsigned int col1) 
+{
+    int i;
+    int* ptr1 = &board[0][col0];
+    int* ptr2 = &board[0][col1];
+    int* score = get_stone_score(color);
+
+    if (socre < 2 || col0 >= col_count || col1 >= col_count) {
+        return 0;
+    }
+
+    *score -= 2;
+
+    for (i = 0; i < col_count; i++) {
+        *ptr1 ^= *ptr2;
+        *ptr2 ^= *ptr1;
+        *ptr1 ^= *ptr2;
+        ptr1+= MAX_COL;
+        ptr2+= MAX_COL;
+    }
+
+    return 1;
+}
+
+int copy_row(const color_t color, const unsigned int src, const unsigned int dst) 
+{
+    int i; 
+    int* ptr1 = board[src];
+    int* ptr2 = board[dst];
+    int* score = get_stone_score(color);
+
+    if (*score < 4 || src >= row_count || dst >= row_count) {
+        return 0;
+    }
+
+    *score -= 4;
+
+    for (i = 0; i < row_count; i++) {
+        *ptr2++ = *ptr1++;
+    }
+
+    return 1;
+}
+
+int copy_column(const color_t color, const unsigned int src, const unsigned int dst)
+{
+    int i;
+    int* ptr1 = &board[0][src];
+    int* ptr2 = &board[0][dst];
+    int* score = get_stone_score(color);
+
+    if (*score < 4 || src >= col_count || dst >= col_count) {
+        return 0;
+    }
+
+    *score -= 4;
+
+    for (i = 0; i < col_count; i++) {
+        *ptr2 = *ptr1;
+        ptr1 += MAX_COL;
+        ptr2 += MAX_COL; 
+    }
+
+    return 1;
+}
 
 static int* get_stone_score(const color_t color) {
     int* score;

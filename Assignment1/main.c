@@ -7,6 +7,22 @@ int main(void)
 {
     int result;
     init_game();
+
+
+    {
+
+        int a = 5;
+        int b = 9;
+        a ^= b;
+        b ^= a;
+        a ^= b;
+
+        printf("a : %d, b : %d\n", a, b);
+
+
+
+    }
+  
     
     assert(is_placeable(0 , 15) == 0);
     assert(is_placeable(15 , 0) == 0);
