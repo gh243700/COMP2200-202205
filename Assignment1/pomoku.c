@@ -111,7 +111,7 @@ int insert_row(const color_t color, const unsigned int row) {
     int j;
     int* score = get_stone_score(color);
     
-    if(*score < 3 || row < 0 || row > row_count  || row_count >= MAX_ROW) {
+    if(*score < 3 || row < 0 || row > row_count || row_count >= MAX_ROW) {
         return 0;
     }
 
