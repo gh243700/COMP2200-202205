@@ -15,7 +15,32 @@ void test_copy_row(void);
 
 
 int main(void)
-{
+{   
+
+    {
+       init_game();
+       assert(place_stone(0, 0, 1) == 1);
+       assert(place_stone(0, 1, 1) == 1);
+       assert(place_stone(0, 2, 1) == 1);
+       assert(place_stone(0, 3, 1) == 1);
+       assert(place_stone(0, 4, 1) == 1);
+       assert(place_stone(0, 5, 1) == 1);
+       assert(place_stone(0, 6, 1) == 1);
+       assert(place_stone(0, 7, 1) == 1);
+       assert(place_stone(0, 8, 1) == 1);
+       assert(insert_row(0, 15) == 1);
+       assert(insert_row(0, 15) == 1);
+       assert(insert_row(0, 15) == 1);
+       assert(insert_row(0, 15) == 1);
+       assert(insert_row(0, 15) == 1);
+       assert(insert_row(0, 15) == 0);
+
+
+
+
+     }
+
+
     {
 
 
