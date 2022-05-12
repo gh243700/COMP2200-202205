@@ -44,7 +44,7 @@ int main(void)
 
 
     }
-    printf("\n----------------test1sssssssfin-----------\n");
+
     return 0;
 }
 
