@@ -34,6 +34,4 @@ int copy_row(const color_t color, const unsigned int src, const unsigned int dst
 
 int copy_column(const color_t color, const unsigned int src, const unsigned int dst);
 
-void print_full_board(void);
-
 #endif

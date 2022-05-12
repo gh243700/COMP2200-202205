@@ -1,5 +1,4 @@
 #include "color.h"
-#include "stdio.h"
 #include "pomoku.h"
 #include <assert.h>
 

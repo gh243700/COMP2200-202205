@@ -324,35 +324,4 @@ static int is_valid_scope(const int r, const int c) {
     return 1;
 }
 
-void print_full_board(void) {
-    int i; 
-    int j;
-    char c;
-    printf("-------------------------------------------------------\n");
-    for(i = 0; i < MAX_ROW; i++) {
-        for (j = 0; j < MAX_COL; j++) {
-        switch(board[i][j]) {
-        case(-1):
-            c = ' ';
-        break;
-        case(COLOR_BLACK):
-            c = 'o';
-        break;
-        case(COLOR_WHITE):
-            c = 'x';
-        break;
-        default: 
-            c = 'q';
-        break;
-        }
-            printf("%c ", c);
-        }
-        printf("\n");
-    }
-    printf("BLACK : %d\nWHITE : %d\n", black_stone_score, white_stone_score );
-    printf("row : %d , col : %d\n", row_count, col_count);
-    printf("-------------------------------------------------------\n");
-
-}
-
 
