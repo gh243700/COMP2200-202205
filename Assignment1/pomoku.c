@@ -207,11 +207,11 @@ int swap_rows(const color_t color, const unsigned int row0, const unsigned int r
     int* ptr2 = board[row1];    
     int* score = get_stone_score(color);
 
-    if (socre < 2 || row0 >= row_count || row1 >= row_count) {
+    if (*score < 2 || row0 >= row_count || row1 >= row_count) {
         return 0;
     }
 
-    *socre -= 2;
+    *score -= 2;
 
     for (i = 0; i < row_count; i++) {
         *ptr1 ^= *ptr2;
@@ -231,7 +231,7 @@ int swap_columns(const color_t color, const unsigned int col0, const unsigned in
     int* ptr2 = &board[0][col1];
     int* score = get_stone_score(color);
 
-    if (socre < 2 || col0 >= col_count || col1 >= col_count) {
+    if (*score < 2 || col0 >= col_count || col1 >= col_count) {
         return 0;
     }
 
