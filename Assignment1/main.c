@@ -34,10 +34,6 @@ int main(void)
        assert(insert_row(0, 15) == 1);
        assert(insert_row(0, 15) == 1);
        assert(insert_row(0, 15) == 0);
-
-
-
-
      }
 
 
