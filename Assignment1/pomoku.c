@@ -115,17 +115,18 @@ int insert_row(const color_t color, const unsigned int row) {
         return 0;
     }
 
-    row_count++;
     *score -= 3;
     
-    for(i = MAX_ROW - 2; i >= row; i--) {
-        for(j = 0; j < MAX_COL; j++) {    
-            board[i + 1][j] = board[i][j];
-            if(i == row) {
+    for(i = row_count; i > row; i--) {
+        for(j = 0; j < col_count; j++) {    
+            board[i][j] = board[i - 1][j];
+            if(i == row - 1) {
                  board[i][j] = -1;   
             }
         }
     }    
+
+    row_count++;
 
     return 1;
 }
@@ -140,17 +141,18 @@ int insert_column(const color_t color, const unsigned int col) {
         return 0;
     }
 
-   col_count++;
     *score -= 3;
 
-    for(i = 0; i < MAX_ROW; i++) {
-        for(j = MAX_COL - 2; j >= col; j--) {    
-            board[i][j + 1] = board[i][j];
-            if(j == col) {
+    for(i = 0; i < row_count; i++) {
+        for(j = col_count; j > col; j--) {    
+            board[i][j] = board[i][j - 1];
+            if(j == col - 1) {
                  board[i][j] = -1;   
             }
         }
     }    
+
+    col_count++;
 
     return 1;
 }
