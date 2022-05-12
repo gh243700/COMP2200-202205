@@ -1,6 +1,5 @@
 #include "pomoku.h"
 #include "color.h"
-#include <stdio.h>
 #include <assert.h>
 
 #define MAX_ROW (20)
@@ -71,7 +70,7 @@ int place_stone(const color_t color, const unsigned int row, const unsigned int 
     int stone_count;
     int* stone_score;
     
-    if (!is_placeable(row, col) || color != COLOR_BLACK && color != COLOR_WHITE) {
+    if (!is_placeable(row, col) || (color != COLOR_BLACK && color != COLOR_WHITE)) {
         return 0;
     }
     
