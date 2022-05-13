@@ -77,25 +77,25 @@ int place_stone(const color_t color, const unsigned int row, const unsigned int 
     stone_score = get_stone_score(color);
     board[row][col] = color;
     
-    stone_count = get_stone_count(color, row + 1, col + 1, 1, 1) + get_stone_count(COLOR_BLACK, row - 1, col - 1, -1, -1) + 1;
+    stone_count = get_stone_count(color, row + 1, col + 1, 1, 1) + get_stone_count(color, row - 1, col - 1, -1, -1) + 1;
     
     if (stone_count >= 5) {
         *stone_score += stone_count - 4;
     }
     
-    stone_count = get_stone_count(color, row - 1, col + 1, -1, 1) + get_stone_count(COLOR_BLACK, row + 1, col - 1, 1, -1) + 1;
+    stone_count = get_stone_count(color, row - 1, col + 1, -1, 1) + get_stone_count(color, row + 1, col - 1, 1, -1) + 1;
     
     if (stone_count >= 5) {
         *stone_score += stone_count - 4;
     }
     
-    stone_count = get_stone_count(color, row, col + 1, 0, 1) + get_stone_count(COLOR_BLACK, row, col - 1, 0, -1) + 1;
+    stone_count = get_stone_count(color, row, col + 1, 0, 1) + get_stone_count(color, row, col - 1, 0, -1) + 1;
     
     if (stone_count >= 5) {
         *stone_score += stone_count - 4;
     }
     
-    stone_count = get_stone_count(color, row + 1, col, 1, 0) + get_stone_count(COLOR_BLACK, row - 1, col, -1, 0) + 1;
+    stone_count = get_stone_count(color, row + 1, col, 1, 0) + get_stone_count(color, row - 1, col, -1, 0) + 1;
     
     if (stone_count >= 5) {
         *stone_score += stone_count - 4;
