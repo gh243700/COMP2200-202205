@@ -114,15 +114,12 @@ int insert_row(const color_t color, const unsigned int row) {
     if(*score < 3 || row < 0 || row > row_count || row_count >= MAX_ROW) {
         return 0;
     }
-
     *score -= 3;
     
-    for(i = row_count; i >= row; i--) {
+    for(i = row_count - 1; i >= (int)row; i--) {
         for(j = 0; j < col_count; j++) {    
             board[i + 1][j] = board[i][j];
-            if(i == row) {
-                 board[i][j] = -1;   
-            }
+            board[i][j] = -1;
         }
     }    
 
@@ -144,11 +141,9 @@ int insert_column(const color_t color, const unsigned int col) {
     *score -= 3;
 
     for(i = 0; i < row_count; i++) {
-        for(j = col_count; j >= col; j--) {    
+        for(j = col_count - 1; j >= (int)col; j--) {    
             board[i][j + 1] = board[i][j];
-            if(j == col) {
-                 board[i][j] = -1;   
-            }
+            board[i][j] = -1;
         }
     }    
 

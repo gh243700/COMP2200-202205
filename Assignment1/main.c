@@ -1,6 +1,7 @@
 #include "color.h"
 #include "pomoku.h"
 #include <assert.h>
+#include <stdio.h>
 
 #define TRUE (1)
 #define FALSE (0)
@@ -16,25 +17,28 @@ void test_copy_row(void);
 
 int main(void)
 {   
-
+    
     {
        init_game();
-       assert(place_stone(0, 0, 1) == 1);
+       assert(place_stone(0, 0, 0) == 1);
        assert(place_stone(0, 1, 1) == 1);
-       assert(place_stone(0, 2, 1) == 1);
-       assert(place_stone(0, 3, 1) == 1);
-       assert(place_stone(0, 4, 1) == 1);
-       assert(place_stone(0, 5, 1) == 1);
-       assert(place_stone(0, 6, 1) == 1);
-       assert(place_stone(0, 7, 1) == 1);
-       assert(place_stone(0, 8, 1) == 1);
+       assert(place_stone(0, 2, 2) == 1);
+       assert(place_stone(0, 3, 3) == 1);
+       assert(place_stone(0, 4, 4) == 1);
+       assert(place_stone(0, 5, 5) == 1);
+       assert(place_stone(0, 6, 6) == 1);
+       assert(place_stone(0, 7, 7) == 1);
+       assert(place_stone(0, 8, 8) == 1);
+       assert(place_stone(0, 9, 9) == 1);
+       assert(place_stone(0, 10, 10) == 1);
+       assert(place_stone(0, 11, 11) == 1);
+       assert(place_stone(0, 12, 12) == 1);
+       assert(place_stone(0, 13, 13) == 1);
+       assert(place_stone(0, 14, 14) == 1);
+       
        assert(insert_row(0, 15) == 1);
-       assert(insert_row(0, 15) == 1);
-       assert(insert_row(0, 15) == 1);
-       assert(insert_row(0, 15) == 1);
-       assert(insert_row(0, 15) == 1);
-       assert(insert_row(0, 15) == 0);
-     }
+       printf("fin\n");
+    }
 
 
     {
