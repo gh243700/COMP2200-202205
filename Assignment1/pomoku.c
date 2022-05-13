@@ -157,7 +157,7 @@ int remove_row(const color_t color, const unsigned int row) {
     int i;
     int j;
 
-    if (score == NULL || *score < 3 || row >= row_count) {
+    if (score == NULL || *score < 3 || row >= row_count || row_count <= MIN_ROW) {
         return 0;
     }
 
@@ -179,7 +179,7 @@ int remove_column(const color_t color, const unsigned int col) {
     int i;
     int j;
 
-    if (score == NULL || *score < 3 || col >= col_count) {
+    if (score == NULL || *score < 3 || col >= col_count || col_count <= MIN_COL) {
         return 0;
     }
 
@@ -193,7 +193,7 @@ int remove_column(const color_t color, const unsigned int col) {
         
     col_count--;
 
-    return 0;
+    return 1;
 }
 
 int swap_rows(const color_t color, const unsigned int row0, const unsigned int row1)

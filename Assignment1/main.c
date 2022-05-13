@@ -63,6 +63,15 @@ int main(void)
         assert(place_stone(0, 0, 7) == 1);
         printf("%d\n", get_score(0));
         assert(get_score(0) == 23);
+
+        assert(remove_column(0, 0) == 1);
+        assert(remove_column(0, 0) == 1);
+        assert(remove_column(0, 0) == 1);
+        assert(remove_column(0, 0) == 1);
+        assert(remove_column(0, 0) == 1);
+        assert(remove_column(0, 0) == 0);
+
+
         printf("fin\n");
     }
 
