@@ -111,7 +111,7 @@ int insert_row(const color_t color, const unsigned int row) {
     int j;
     int* score = get_stone_score(color);
     
-    if(*score < 3 || row < 0 || row > row_count || row_count >= MAX_ROW) {
+    if(score == NULL || *score < 3 || row < 0 || row > row_count || row_count >= MAX_ROW) {
         return 0;
     }
     *score -= 3;
@@ -134,7 +134,7 @@ int insert_column(const color_t color, const unsigned int col) {
     int j;
     int* score = get_stone_score(color);
     
-    if(*score < 3 || col < 0 || col > col_count || col_count >= MAX_COL) {
+    if(score == NULL || *score < 3 || col < 0 || col > col_count || col_count >= MAX_COL) {
         return 0;
     }
 
@@ -157,7 +157,7 @@ int remove_row(const color_t color, const unsigned int row) {
     int i;
     int j;
 
-    if (*score < 3 || row >= row_count) {
+    if (score == NULL || *score < 3 || row >= row_count) {
         return 0;
     }
 
@@ -179,7 +179,7 @@ int remove_column(const color_t color, const unsigned int col) {
     int i;
     int j;
 
-    if (*score < 3 || col >= col_count) {
+    if (score == NULL || *score < 3 || col >= col_count) {
         return 0;
     }
 
@@ -203,7 +203,7 @@ int swap_rows(const color_t color, const unsigned int row0, const unsigned int r
     int* ptr2 = board[row1];    
     int* score = get_stone_score(color);
 
-    if (*score < 2 || row0 >= row_count || row1 >= row_count) {
+    if (score == NULL || *score < 2 || row0 >= row_count || row1 >= row_count) {
         return 0;
     }
 
@@ -227,7 +227,7 @@ int swap_columns(const color_t color, const unsigned int col0, const unsigned in
     int* ptr2 = &board[0][col1];
     int* score = get_stone_score(color);
 
-    if (*score < 2 || col0 >= col_count || col1 >= col_count) {
+    if (score == NULL || *score < 2 || col0 >= col_count || col1 >= col_count) {
         return 0;
     }
 
@@ -251,7 +251,7 @@ int copy_row(const color_t color, const unsigned int src, const unsigned int dst
     int* ptr2 = board[dst];
     int* score = get_stone_score(color);
 
-    if (*score < 4 || src >= row_count || dst >= row_count) {
+    if (score == NULL || *score < 4 || src >= row_count || dst >= row_count) {
         return 0;
     }
 
@@ -271,7 +271,7 @@ int copy_column(const color_t color, const unsigned int src, const unsigned int 
     int* ptr2 = &board[0][dst];
     int* score = get_stone_score(color);
 
-    if (*score < 4 || src >= col_count || dst >= col_count) {
+    if (score == NULL || *score < 4 || src >= col_count || dst >= col_count) {
         return 0;
     }
 
@@ -297,7 +297,7 @@ static int* get_stone_score(const color_t color) {
         score = &white_stone_score;
     break;
     default: 
-        assert(0);
+        return NULL;
     break;
     }
     

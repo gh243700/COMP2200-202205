@@ -36,7 +36,7 @@ int main(void)
        assert(place_stone(0, 13, 13) == 1);
        assert(place_stone(0, 14, 14) == 1);
        
-       assert(insert_row(0, 15) == 1);
+       assert(insert_row(5, 0) == 0);
        printf("fin\n");
     }
 
