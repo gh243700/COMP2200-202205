@@ -59,9 +59,9 @@ int get_travel_time(const char* const cab_start_location, const size_t cab_lengt
     const char* cab_location_ptr = cab_start_location;
     size_t i;
     size_t j;
-    double travel_time = 0;
-    size_t zone_count = 0;
-    int is_safe = -1;    
+    double travel_time = 0.0;
+    size_t safe_zone_count = 0;
+    size_t unsafe_zone_count = 0;
 
     if (cluster_count == 0) { 
         return cab_length / 10;
@@ -78,42 +78,17 @@ int get_travel_time(const char* const cab_start_location, const size_t cab_lengt
             cluster_length_ptr++; 
         }
 
-        if (is_safe == -1) {
-            is_safe = (overlap_count % 2) ? 0 : 1;
-            goto label3;
-        }
-    
-        if (i == cab_length - 1) {
-            if (is_safe) {
-                goto label1;
-            } else {
-                goto label2;
-            }
-        }
-
         if (overlap_count % 2) {
-label1:
-            if (is_safe) {
-                travel_time += zone_count / 5.0;
-                printf("safezone : %d\n", zone_count);
-                zone_count = 0;
-            }
-            is_safe = 0;
+            unsafe_zone_count++;
         } else {
-label2:
-            if (!is_safe) {
-                travel_time += zone_count / 10.0;
-                printf("danger : %d\n", zone_count);
-                zone_count = 0;
-            }
-            is_safe = 1;
+            safe_zone_count++;
         }
-label3:
-        zone_count++;        
         cab_location_ptr++;
     }
-
-    printf("%f\n", travel_time);
+    
+    travel_time += safe_zone_count / 10.0;
+    travel_time += unsafe_zone_count / 5.0;
+    travel_time += 0.5;
     
     return (int)(travel_time);
 }
