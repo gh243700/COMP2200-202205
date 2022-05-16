@@ -73,8 +73,8 @@ int get_travel_time(const char* const cab_start_location, const size_t cab_lengt
         for (j = 0; j < cluster_count; j++) {
             const char* cluster_start_location = cluster_start_locations[j];    
             if (cab_location_ptr >= cluster_start_location && cab_location_ptr < cluster_start_location + *cluster_length_ptr) {
-                    overlap_count++;
-                }
+                overlap_count++;
+            }
             cluster_length_ptr++; 
         }
 
