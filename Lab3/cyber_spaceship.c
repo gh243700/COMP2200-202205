@@ -64,7 +64,7 @@ int get_travel_time(const char* const cab_start_location, const size_t cab_lengt
     size_t unsafe_zone_count = 0;
 
     if (cluster_count == 0) { 
-        return (cab_length / 10.0) + 0.5;
+        return cab_length / 10.0 + 0.5;
     }
 
     for (i = 0; i < cab_length; i++) {
