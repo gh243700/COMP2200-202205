@@ -194,7 +194,7 @@ int remove_column(const color_t color, const unsigned int col)
         return 0;
     }
 
-   *score -= 3;
+    *score -= 3;
 
     for (i = 0; i < s_row_count; i++) {
         for (j = col; j < s_col_count; j++) {
@@ -248,8 +248,8 @@ int swap_columns(const color_t color, const unsigned int col0, const unsigned in
         *ptr1 ^= *ptr2;
         *ptr2 ^= *ptr1;
         *ptr1 ^= *ptr2;
-        ptr1+= MAX_COL;
-        ptr2+= MAX_COL;
+        ptr1 += MAX_COL;
+        ptr2 += MAX_COL;
     }
 
     return 1;
@@ -297,25 +297,27 @@ int copy_column(const color_t color, const unsigned int src, const unsigned int 
     return 1;
 }
 
-int* get_stone_score(const color_t color) {
+int* get_stone_score(const color_t color) 
+{
     int* score;
     
     switch (color) {
     case COLOR_BLACK: 
         score = &s_black_stone_score;
-    break;
-	case COLOR_WHITE: 
+        break;
+    case COLOR_WHITE: 
         score = &s_white_stone_score;
-    break;
+        break;
     default: 
         return NULL;
-    break;
+        break;
     }
     
     return score;
 }
 
-int get_stone_count(const color_t color, const unsigned int row, const unsigned int col,const int row_increment,const int col_increment) {
+int get_stone_count(const color_t color, const unsigned int row, const unsigned int col, const int row_increment, const int col_increment) 
+{
     if (!is_valid_scope(row, col) || s_board[row][col] != color) {
         return 0;
     }
@@ -324,7 +326,8 @@ int get_stone_count(const color_t color, const unsigned int row, const unsigned 
 }
 
 
-int is_valid_scope(const int r, const int c) {
+int is_valid_scope(const int r, const int c) 
+{
     if (-1 >= r || s_row_count <= r || -1 >= c || s_col_count <= c) {
         return 0;
     }
