@@ -91,35 +91,7 @@ label1:
 
 char* reverse_tokenize(char* str_or_null, const char* delims)
 {
-    static char* msg; 
-    char* ptr;
-
-    if (str_or_null != NULL) {
-        msg = str_or_null;
-    }
-    ptr = msg;
- 
-    if (*msg == '\0') {
-        return NULL;
-    }    
-
-    while (*msg != '\0') {
-        const char* delims_ptr = delims; 
-        while (*delims_ptr != '\0') {
-            if (*msg == *delims_ptr) {
-                if (ptr == msg) {
-                    ptr++;
-                } else {
-                    *msg = '\0';
-                    msg++;
-                    goto label1;
-                }
-            }
-            delims_ptr++;
-        } 
-        msg++;
-    }
-label1:
+    char* ptr = tokenize(str_or_null, delims);
     if (ptr != NULL) {
         reverse(ptr);
     }
