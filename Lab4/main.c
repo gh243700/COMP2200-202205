@@ -64,10 +64,59 @@ printf("%s\n" ,reverse_tokenize(str, " !")); /* &str[0]을 반환. 토큰은 "hO
 printf("%s\n" ,reverse_tokenize(NULL, " !")); /* &str[3]을 반환. 토큰은 "yppah" */
 printf("%s\n" ,reverse_tokenize(NULL, " !")); /* &str[9]을 반환. 토큰은 "yad" */
 printf("%s\n" ,reverse_tokenize(NULL, " !")); /* &str[14]을 반환. 토큰은 "yM" */
+printf("%s\n" ,reverse_tokenize(NULL, " !")); /* &str[14]을 반환. 토큰은 "yM" */
+printf("%s\n" ,reverse_tokenize(NULL, " !")); /* &str[14]을 반환. 토큰은 "yM" */
+printf("%s\n" ,reverse_tokenize(NULL, " !")); /* &str[14]을 반환. 토큰은 "yM" */
 
-tokenize(NULL, " !"); /* &str[17]을 반환. 토큰은 "lovely" */
-reverse_tokenize(NULL, " !"); /* &str[24]을 반환. 토큰은 "yad" */
+}
+printf("\n");
+{
+char str[] = "asdf,.. jfdsf";
+printf("%s\n" ,tokenize(str, ",. ")); /* &str[0]을 반환. 토큰은 "Oh" */
+printf("%s\n" ,tokenize(NULL, ",. "));
+printf("%s\n" ,tokenize(NULL, ",. "));
+printf("%s\n" ,tokenize(NULL, ",. "));
+printf("%s\n" ,tokenize(NULL, ",. "));
+printf("%s\n" ,tokenize(NULL, ",. "));
+printf("%s\n" ,tokenize(NULL, ",. "));
+printf("%s\n" ,tokenize(NULL, ",. "));
 
+
+
+}
+   {
+        const char* one_delim = " ";
+        const char* mult_delim = " ,!";
+        char str_strtok[] = "I am a boy, and you are a girl!";
+        char str_tokenize[] = "I am a boy, and you are a girl!";
+
+        char str_strtok2[] = "!,I    am  a boy,  and    you   are a   girl!";
+        char str_tokenize2[] = "!,I    am  a boy,  and    you   are a   girl!";
+        char* token_strtok = strtok(str_strtok, one_delim);
+        char* token_tokenize = tokenize(str_tokenize, one_delim);
+
+        while (token_strtok != NULL && token_tokenize != NULL) {
+            assert(strcmp(token_strtok, token_tokenize) == 0);
+            token_strtok = strtok(NULL, one_delim);
+            token_tokenize = tokenize(NULL, one_delim);
+        }
+
+        token_strtok = strtok(str_strtok2, mult_delim);
+        token_tokenize = tokenize(str_tokenize2, mult_delim);
+
+        while (token_strtok != NULL && token_tokenize != NULL) {
+            assert(strcmp(token_strtok, token_tokenize) == 0);
+            token_strtok = strtok(NULL, mult_delim);
+            token_tokenize = tokenize(NULL, mult_delim);
+        }
+    }
+
+
+{
+char empty0[1] = {'\0'};
+char* empty1 = "";
+
+assert(strncmp(empty0, empty1, 1) == 0); 
 
 
 

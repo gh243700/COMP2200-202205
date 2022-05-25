@@ -20,6 +20,9 @@ void reverse(char* str)
 int index_of(const char* str, const char* word)
 {
     const char* str_ptr = str;
+    if (*word == '\0') {
+        return 0;
+    }
     while (*str_ptr != '\0') {
         const char* word_ptr = word;
         const char* str_ptr_temp = str_ptr;
@@ -117,7 +120,9 @@ char* reverse_tokenize(char* str_or_null, const char* delims)
         msg++;
     }
 label1:
-    reverse(ptr);
+    if (ptr != NULL) {
+        reverse(ptr);
+    }
     return ptr;
 }
 
