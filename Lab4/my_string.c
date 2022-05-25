@@ -86,7 +86,7 @@ char* tokenize(char* str_or_null, const char* delims)
         msg++;
     }
 label1:
-    return ptr;
+    return (*ptr == '\0') ? NULL : ptr;
 }
 
 char* reverse_tokenize(char* str_or_null, const char* delims)
