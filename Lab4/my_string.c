@@ -2,6 +2,7 @@
 #include <assert.h>
 
 static int length(const char* str);
+static int contains(char c, const char* delims);
 
 void reverse(char* str)
 {
@@ -103,4 +104,15 @@ static int length(const char * str) {
         ptr++;
     }
     return ptr - str;
+}
+
+static int contains(char c, const char* delims) 
+{
+    while (*delims != '\0') {
+        if (*delims == c) {
+            return 1;
+        }
+        delims++;
+    }
+    return 0;
 }
