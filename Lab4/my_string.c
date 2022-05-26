@@ -57,36 +57,35 @@ void reverse_by_words(char* str)
 
 char* tokenize(char* str_or_null, const char* delims)
 {
-    static char* msg; 
-    char* ptr;
-
+    static char* s_buffer;
+    
+    char* str_ptr = s_buffer;
+    
     if (str_or_null != NULL) {
-        msg = str_or_null;
-    }
-    ptr = msg;
- 
-    if (*msg == '\0') {
+        s_buffer = str_or_null;
+        str_ptr = s_buffer;
+    } else if (s_buffer == NULL) {
         return NULL;
-    }    
-
-    while (*msg != '\0') {
-        const char* delims_ptr = delims; 
-        while (*delims_ptr != '\0') {
-            if (*msg == *delims_ptr) {
-                if (ptr == msg) {
-                    ptr++;
-                } else {
-                    *msg = '\0';
-                    msg++;
-                    goto label1;
-                }
-            }
-            delims_ptr++;
-        } 
-        msg++;
     }
-label1:
-    return (*ptr == '\0') ? NULL : ptr;
+    
+    if (contains(*s_buffer, delims)) {
+        s_buffer++;
+        return tokenize(NULL, delims);
+    }
+    
+    if (*s_buffer == '\0') {
+        str_ptr = NULL;
+    }
+    
+    while (*s_buffer != '\0') {
+        if (contains(*s_buffer, delims)) {
+            *s_buffer++ = '\0';
+            break;
+        }
+        s_buffer++;
+    }
+    
+    return str_ptr;
 }
 
 char* reverse_tokenize(char* str_or_null, const char* delims)

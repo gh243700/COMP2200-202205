@@ -116,9 +116,11 @@ assert(strncmp(empty0, empty1, 1) == 0);
 
 {
 
-
-
-
+char str[] = "asdf,.. jfdsf";
+char delim[] = ",. ";
+printf("%s\n" , tokenize(str, delim));
+printf("%s\n" , tokenize(NULL, delim));
+printf("%s\n" , tokenize(NULL, delim));
 }
 
     {
