@@ -98,7 +98,7 @@ char* reverse_tokenize(char* str_or_null, const char* delims)
     return ptr;
 }
 
-static int getlength(const char * str) 
+static int getlength(const char* str) 
 {
     const char* ptr = str;
     while (*ptr != '\0') {
