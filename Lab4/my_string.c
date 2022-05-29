@@ -30,7 +30,7 @@ int index_of(const char* str, const char* word)
         while (*str_ptr_temp == *word_ptr) {
             str_ptr_temp++;
             word_ptr++;
-	    if (*word_ptr == '\0') {
+            if (*word_ptr == '\0') {
                 return str_ptr - str;
             }
         }
