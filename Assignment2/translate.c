@@ -39,7 +39,6 @@ label1:
         return ERROR_CODE_WRONG_ARGUMENTS_NUMBER;
     }
 
-
     if(!refine_set(&length1, refined_set1, *(argv + argc - 2), FALSE, &error_code) || !refine_set(&length2, refined_set2, *(argv + argc - 1), FALSE, &error_code)) {
         return error_code;
     }
