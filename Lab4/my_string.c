@@ -1,20 +1,20 @@
 #include "my_string.h"
 #include <assert.h>
 
-static int length(const char* str);
+static int getlength(const char* str);
 static int contains(char c, const char* delims);
 
 void reverse(char* str)
 {
     int i; 
     char* ptr = str;
-    int len = length(str);
+    int len = getlength(str);
 
     for (i = 0; i < len / 2; i++) {
         *ptr ^= *(str + len - i - 1);
         *(str + len - i - 1) ^= *ptr;
         *ptr ^= *(str + len - i - 1);
-         ptr++;
+        ptr++;
     }
 }
 
@@ -30,7 +30,7 @@ int index_of(const char* str, const char* word)
         while (*str_ptr_temp == *word_ptr) {
             str_ptr_temp++;
             word_ptr++;
-	    if (*word_ptr == '\0') {
+            if (*word_ptr == '\0') {
                 return str_ptr - str;
             }
         }
@@ -98,7 +98,8 @@ char* reverse_tokenize(char* str_or_null, const char* delims)
     return ptr;
 }
 
-static int length(const char * str) {
+static int getlength(const char* str) 
+{
     const char* ptr = str;
     while (*ptr != '\0') {
         ptr++;
