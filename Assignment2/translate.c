@@ -5,6 +5,7 @@
 #define LENGTH (512)
 
 static int refine_set(int* length, char* refined_set, const char* const set, int can_be_scope, error_code_t* code);
+
 int translate(int argc, const char** argv)
 {   
     int i;
@@ -24,6 +25,9 @@ int translate(int argc, const char** argv)
 
     int is_case_sensitive = FALSE;
 
+    const char* set1;
+    const char* set2;
+
     if (argc == 4) {
         if (**(argv + 1) != '-') {
             goto label1;
@@ -33,13 +37,19 @@ int translate(int argc, const char** argv)
         }
     
         is_case_sensitive = TRUE;
+    
+        set1 = *(argv + 2);
+        set2 = *(argv + 3);
         
     } else if (argc > 4) {
 label1:
         return ERROR_CODE_WRONG_ARGUMENTS_NUMBER;
+    } else {
+        set1 = *(argv + 1);
+        set2 = *(argv + 2);
     }
 
-    if(!refine_set(&length1, refined_set1, *(argv + argc - 2), FALSE, &error_code) || !refine_set(&length2, refined_set2, *(argv + argc - 1), FALSE, &error_code)) {
+    if(!refine_set(&length1, refined_set1, set1, FALSE, &error_code) || !refine_set(&length2, refined_set2, set2, FALSE, &error_code)) {
         return error_code;
     }
     
