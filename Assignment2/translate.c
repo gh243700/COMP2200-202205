@@ -41,7 +41,7 @@ int translate(int argc, const char** argv)
         set1 = *(argv + 2);
         set2 = *(argv + 3);
         
-    } else if (argc > 4) {
+    } else if (argc > 4 || argc < 3) {
 label1:
         return ERROR_CODE_WRONG_ARGUMENTS_NUMBER;
     } else {
