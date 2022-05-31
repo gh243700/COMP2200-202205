@@ -5,6 +5,7 @@
 #define LENGTH (512)
 
 static int refine_set(int* length, char* refined_set, const char* const set, int can_be_scope, error_code_t* code);
+static char get_escape(const char c);
 
 int translate(int argc, const char** argv)
 {   
@@ -119,51 +120,14 @@ static int refine_set(int* length, char* refined_set, const char* const set, int
     }
 
     if (*set == '\\') {
-        switch (next_char) {
-        case '\\':
-            *refined_set++ = '\\';
-            *refined_set = '\0';
-        break;
-        case 'a':
-            *refined_set++ = '\a';
-            *refined_set = '\0';
-        break;
-        case 'b':
-            *refined_set++ = '\b';
-            *refined_set = '\0';
-        break;
-        case 'f':
-            *refined_set++ = '\f';
-            *refined_set = '\0';
-        break;
-        case 'n':
-            *refined_set++ = '\n';
-            *refined_set = '\0';
-        break;
-        case 'r':
-            *refined_set++ = '\r';
-            *refined_set = '\0';
-        break;
-        case 't':
-            *refined_set++ = '\t';
-            *refined_set = '\0';
-        break;
-        case 'v':
-            *refined_set++ = '\v';
-            *refined_set = '\0';
-        break;
-        case '\'':
-            *refined_set++ = '\'';
-            *refined_set = '\0';
-        break;
-        case '\"':
-            *refined_set++ = '\"';
-            *refined_set = '\0';
-        break;
-        default :
+        next_char = get_escape(next_char);
+        if (next_char == ERROR_CODE_INVALID_FORMAT) {
             *code = ERROR_CODE_INVALID_FORMAT;
-        return FALSE;
+            return FALSE;
         }
+        *refined_set++ = next_char;
+        *refined_set = '\0';
+
         *length += 1;
         return refine_set(length, refined_set, set + 2, TRUE, code);
     }
@@ -171,6 +135,17 @@ static int refine_set(int* length, char* refined_set, const char* const set, int
     if (*set == '-' && can_be_scope && next_char != '\0') {
         int i;
         char c1 = *(refined_set - 1);
+        int has_escape = FALSE;
+
+        if (next_char == '\\') {
+            next_char = get_escape( *(set + 2));
+            has_escape = TRUE;
+            if (next_char == ERROR_CODE_INVALID_FORMAT) {
+                *code = ERROR_CODE_INVALID_FORMAT;
+                return FALSE;
+            }
+        }    
+
         if (c1 > next_char) {
             *code = ERROR_CODE_INVALID_RANGE;
             return FALSE;
@@ -182,7 +157,7 @@ static int refine_set(int* length, char* refined_set, const char* const set, int
             *length += 1;
         }
 
-        return refine_set(length, refined_set, set + 2, FALSE, code); 
+        return refine_set(length, refined_set, set + 2 + has_escape, FALSE, code); 
     }    
     *refined_set++ = *set;
     *refined_set = '\0';
@@ -190,3 +165,46 @@ static int refine_set(int* length, char* refined_set, const char* const set, int
     
     return refine_set(length, refined_set, set + 1, TRUE, code);
 }
+
+static char get_escape(const char c) 
+{
+    char escape;
+    switch (c) {
+        case '\\':
+            escape = '\\';
+        break;
+        case 'a':
+            escape = '\a';
+        break;
+        case 'b':
+            escape = '\b';
+        break;
+        case 'f':
+            escape = '\f';
+        break;
+        case 'n':
+            escape = '\n';
+        break;
+        case 'r':
+            escape = '\r';
+        break;
+        case 't':
+            escape = '\t';
+        break;
+        case 'v':
+            escape = '\v';
+        break;
+        case '\'':
+            escape = '\'';
+        break;
+        case '\"':
+            escape = '\"';
+        break;
+        default :
+            escape = ERROR_CODE_INVALID_FORMAT;
+        break;
+    }
+    return escape;
+}
+
+
