@@ -85,7 +85,7 @@ label1:
         ptr0 = refined_set1;
         while (*ptr0 != '\0') {
             if ((is_case_sensitive) ? (0x20 | c) == (0x20 | *ptr0) : c == *ptr0) {
-                putc(refined_set2[ptr0 - refined_set1], stdout); 
+                printf("%c", refined_set2[ptr0 - refined_set1]); 
                 has_char = TRUE;
                 break;
             }     
@@ -93,13 +93,13 @@ label1:
         }
         
         if (!has_char) {
-            putc(c, stdout);
+            printf("%c", c);
         }
 
         c = fgetc(stdin);
     }
 
-    return TRUE;
+    return 0;
 }
 
 
