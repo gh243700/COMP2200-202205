@@ -83,30 +83,30 @@ int print_receipt(const char* filename, time_t timestamp)
     buffer_ptr += 18;
     sprintf(buffer_ptr, "--------------------------------------------------\r\n");
     buffer_ptr += 52;
-    sprintf(buffer_ptr, "%04d-%02d-%02d.%02d:%02d:%02d..........................%05d\r\n", t -> tm_year + 1900, t -> tm_mon + 1, t -> tm_mday, t -> tm_hour, t -> tm_min, t -> tm_sec, s_order_number);
+    sprintf(buffer_ptr, "%04d-%02d-%02d.%02d:%02d:%02d                          %05d\r\n", t -> tm_year + 1900, t -> tm_mon + 1, t -> tm_mday, t -> tm_hour, t -> tm_min, t -> tm_sec, s_order_number);
     buffer_ptr += 52;
     sprintf(buffer_ptr, "--------------------------------------------------\r\n");
     buffer_ptr += 52;
 
     for (i = 0; i < s_items_index; i++) {
         item_t item = s_items[i];
-        sprintf(buffer_ptr, "........%25s...........%6.2f\r\n", item.name, item.price);
+        sprintf(buffer_ptr, "        %25s           %6.2f\r\n", item.name, item.price);
         buffer_ptr += 52;
         subtotal += item.price;
     }
     sprintf(buffer_ptr, "\r\n");
     buffer_ptr += 2;
-    sprintf(buffer_ptr, ".........................Subtotal...........%6.2f\r\n", subtotal);
+    sprintf(buffer_ptr, "                         Subtotal           %6.2f\r\n", subtotal);
     buffer_ptr += 52;
 
     if (s_tip > 0.0) {
-        sprintf(buffer_ptr, "..............................Tip...........%6.2f\r\n", s_tip);
+        sprintf(buffer_ptr, "                              Tip           %6.2f\r\n", s_tip);
         buffer_ptr += 52;
     }
     
-    sprintf(buffer_ptr, "..............................Tax%17.2f\r\n", subtotal * 0.05 + 0.005);
+    sprintf(buffer_ptr, "                              Tax%17.2f\r\n", subtotal * 0.05 + 0.005);
     buffer_ptr += 52;
-    sprintf(buffer_ptr, "............................Total%17.2f\r\n", subtotal + s_tip + subtotal * 0.05 + 0.005);
+    sprintf(buffer_ptr, "                            Total%17.2f\r\n", subtotal + s_tip + subtotal * 0.05 + 0.005);
     buffer_ptr += 52;
 
     sprintf(buffer_ptr, "\r\n");
@@ -121,17 +121,9 @@ int print_receipt(const char* filename, time_t timestamp)
     sprintf(buffer_ptr, "==================================================\r\n");
     buffer_ptr += 52;
 
-    sprintf(buffer_ptr, "........................................Tax#-51234");
-
-    buffer_ptr = buffer;
-
-    while (*buffer_ptr != '\0') {
-        if (*buffer_ptr == ' ') {
-            *buffer_ptr = '.';
-        }
-        buffer_ptr++;
-    }
-
+    sprintf(buffer_ptr, "                                        Tax#-51234");
+    buffer_ptr += 50;
+    
     fs = fopen(filename, "wb");
     fwrite(buffer, sizeof(buffer[0]), buffer_ptr - buffer, fs);
     fclose(fs);
