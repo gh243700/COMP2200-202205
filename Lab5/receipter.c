@@ -75,6 +75,10 @@ int print_receipt(const char* filename, time_t timestamp)
     char buffer[2048]; 
     char* buffer_ptr = buffer;    
 
+    if (s_items_index <= 0) {
+        return FALSE;
+    }
+
     sprintf(buffer_ptr, "Charles'.Seafood\r\n");
     buffer_ptr += 18;
     sprintf(buffer_ptr, "--------------------------------------------------\r\n");
