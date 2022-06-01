@@ -138,7 +138,7 @@ static int refine_set(int* length, char* refined_set, const char* const set, int
         int has_escape = FALSE;
 
         if (next_char == '\\') {
-            next_char = get_escape( *(set + 2));
+            next_char = get_escape(*(set + 2));
             has_escape = TRUE;
             if (next_char == ERROR_CODE_INVALID_FORMAT) {
                 *code = ERROR_CODE_INVALID_FORMAT;
