@@ -96,7 +96,7 @@ int print_receipt(const char* filename, time_t timestamp)
     }
     sprintf(buffer_ptr, "\r\n");
     buffer_ptr += 2;
-    sprintf(buffer_ptr, "                         Subtotal          %6.2f\r\n", subtotal);
+    sprintf(buffer_ptr, "                         Subtotal%17.2f\r\n", subtotal);
     buffer_ptr += 52;
 
     if (s_tip > 0.0) {
