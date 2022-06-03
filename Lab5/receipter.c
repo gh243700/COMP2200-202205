@@ -61,7 +61,7 @@ void set_message(const char* message)
     for (i = 0; i < MAX_MESSAGE_LENGTH && *message != '\0'; i++) {
         *s_message_ptr++ = *message++;
     }
-    s_message_length = s_message_ptr - s_message;
+    s_message_length = s_message_ptr - s_message + 1;
     *s_message_ptr = '\0';
 }
 
