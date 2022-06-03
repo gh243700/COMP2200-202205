@@ -83,7 +83,7 @@ int print_receipt(const char* filename, time_t timestamp)
     buffer_ptr += 18;
     sprintf(buffer_ptr, "--------------------------------------------------\r\n");
     buffer_ptr += 52;
-    sprintf(buffer_ptr, "%04d-%02d-%02d.%02d:%02d:%02d                          %05d\r\n", t -> tm_year + 1900, t -> tm_mon + 1, t -> tm_mday + 1, t -> tm_hour + 12, t -> tm_min, t -> tm_sec, s_order_number);
+    sprintf(buffer_ptr, "%04d-%02d-%02d %02d:%02d:%02d                          %05d\r\n", t -> tm_year + 1900, t -> tm_mon + 1, t -> tm_mday + 1, t -> tm_hour + 12, t -> tm_min, t -> tm_sec, s_order_number);
     buffer_ptr += 52;
     sprintf(buffer_ptr, "--------------------------------------------------\r\n");
     buffer_ptr += 52;
