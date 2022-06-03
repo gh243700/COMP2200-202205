@@ -79,7 +79,7 @@ int print_receipt(const char* filename, time_t timestamp)
         return FALSE;
     }
 
-    sprintf(buffer_ptr, "Charles'.Seafood\r\n");
+    sprintf(buffer_ptr, "Charles' Seafood\r\n");
     buffer_ptr += 18;
     sprintf(buffer_ptr, "--------------------------------------------------\r\n");
     buffer_ptr += 52;
