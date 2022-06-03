@@ -1,6 +1,6 @@
-Charles'.Seafood
+Charles' Seafood
 --------------------------------------------------
-2019-09-26.13:43:17                          00000
+2019-09-27 01:43:17                          00000
 --------------------------------------------------
                          Magarita            12.45
                     Sharkfin soup           500.12
@@ -15,10 +15,11 @@ Charles'.Seafood
 
                          Subtotal           725.23
                               Tip            20.55
-                              Tax            36.27
-                            Total           782.05
+                              Tax            36.26
+                            Total           782.04
 
-Thanks for dining with us!
+Thanks for dining with us!ssssssssssssssssssssssss
+sssssssssssssssssssssssss
 
 ==================================================
                                         Tax#-51234

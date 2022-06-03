@@ -21,7 +21,7 @@ static int s_items_index = 0;
 
 static double s_tip = 0.0;
 
-static char s_message[MAX_MESSAGE_LENGTH + 1];
+static char s_message[128];
 static char s_message_length = 0;
 
 int add_item(const char* name, double price)
