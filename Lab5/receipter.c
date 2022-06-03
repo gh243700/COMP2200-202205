@@ -104,9 +104,9 @@ int print_receipt(const char* filename, time_t timestamp)
         buffer_ptr += 52;
     }
     
-    sprintf(buffer_ptr, "                              Tax%17.2f\r\n", subtotal * 0.05 + 0.005);
+    sprintf(buffer_ptr, "                              Tax%17.2f\r\n", subtotal * 0.05);
     buffer_ptr += 52;
-    sprintf(buffer_ptr, "                            Total%17.2f\r\n", subtotal + s_tip + subtotal * 0.05 + 0.005);
+    sprintf(buffer_ptr, "                            Total%17.2f\r\n", subtotal + s_tip + subtotal * 0.05);
     buffer_ptr += 52;
 
     sprintf(buffer_ptr, "\r\n");
