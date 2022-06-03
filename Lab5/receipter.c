@@ -112,11 +112,13 @@ int print_receipt(const char* filename, time_t timestamp)
     sprintf(buffer_ptr, "\r\n");
     buffer_ptr += 2;
     
-    sprintf(buffer_ptr, "%s\r\n", s_message);
-    buffer_ptr += s_message_length + 2;
+    if (s_message_length > 0) {
+        sprintf(buffer_ptr, "%s\r\n", s_message);
+        buffer_ptr += s_message_length + 2;
 
-    sprintf(buffer_ptr, "\r\n");
-    buffer_ptr += 2;
+        sprintf(buffer_ptr, "\r\n");
+        buffer_ptr += 2;
+    }
 
     sprintf(buffer_ptr, "==================================================\r\n");
     buffer_ptr += 52;
