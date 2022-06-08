@@ -47,7 +47,8 @@ int main(void)
 
     version = get_character("Lab6_Resources\\Flash_v3.txt", &flash_v3);
     assert(version == 3);
-    assert(strcmp(flash_v3.name, "Flash_v3") == 0);
+    printf("%s\n", flash_v3.name);
+    assert(strcmp(flash_v3.name, "Flash_v3dddddddddddddddddddddddddddddddddddddddddd") == 0);
     assert(flash_v3.level == 50);
     assert(flash_v3.health == 280);
     assert(flash_v3.mana == 55);
