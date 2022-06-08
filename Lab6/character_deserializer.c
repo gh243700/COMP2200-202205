@@ -8,6 +8,7 @@ void deserialize_character_v1(character_v3_t* out_character, char* src);
 void deserialize_character_v2(character_v3_t* out_character, char* src);
 void deserialize_character_v3(character_v3_t* out_character, char* src);
 int str_cmp(char* str1, char* str2);
+void name_len(char* src);
 
 int get_character(const char* filename, character_v3_t* out_character)
 {
@@ -50,7 +51,7 @@ void deserialize_character_v3(character_v3_t* out_character, char* src)
     ptr = tokenize(NULL, "\n", &temp);
 
     ptr = tokenize(ptr, " |", &dummy);
-    sprintf(out_character -> name, "%50s", ptr);
+    sprintf(out_character -> name, "%s", ptr);
 
     ptr = tokenize(NULL, " |", &dummy);
     sscanf(ptr, "%d", &(out_character -> level));   
@@ -100,7 +101,7 @@ void deserialize_character_v3(character_v3_t* out_character, char* src)
     i = 0;
     while(ptr != NULL) {
         ptr = tokenize(ptr, " |", &dummy);
-        sprintf(out_character -> minions[i].name, "%50s", ptr);
+        sprintf(out_character -> minions[i].name, "%s", ptr);
         ptr = tokenize(NULL, " |", &dummy);
         sscanf(ptr, "%d", &(out_character -> minions[i].health));
         ptr = tokenize(NULL, " |", &dummy);
@@ -122,7 +123,7 @@ void deserialize_character_v2(character_v3_t* out_character, char* src)
     ptr = tokenize(NULL, "\n", &dummy);
 
     ptr = tokenize(ptr, ", ", &dummy);
-    sprintf(out_character -> name, "%50s", ptr);
+    sprintf(out_character -> name, "%s", ptr);
 
     ptr = tokenize(NULL, ", ", &dummy);
     sscanf(ptr, "%d", &(out_character -> level));
@@ -216,6 +217,18 @@ int str_cmp(char* str1, char* str2)
     }
 
     return *str1 - *str2;
+}
+
+void name_len(char* src)
+{
+    char* ptr = src;
+    while (*ptr != '\0') {
+        if (ptr - src >= 50) {
+            *ptr = '\0';
+            break;
+        }
+        ptr++;
+    }
 }
 
 char* tokenize(char* src_or_null, const char* dilm, char** out_end) {
