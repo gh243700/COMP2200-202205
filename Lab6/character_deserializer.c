@@ -4,11 +4,10 @@
 #define LENGTH (1024)
 
 char* tokenize(char* src_or_null, const char* dilm, char** out_end);
-size_t get_length(const char* src);
-
 void deserialize_character_v1(character_v3_t* out_character, char* src);
 void deserialize_character_v2(character_v3_t* out_character, char* src);
 void deserialize_character_v3(character_v3_t* out_character, char* src);
+int str_cmp(char* str1, char* str2);
 
 int get_character(const char* filename, character_v3_t* out_character)
 {
