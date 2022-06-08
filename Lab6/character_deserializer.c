@@ -173,11 +173,9 @@ void deserialize_character_v1(character_v3_t* out_character, char* src)
 
     for (i = 0; i< 8; i++) {
         if (str_cmp("id", ptr) == 0) {
-            char* c;
             ptr = tokenize(NULL, ",: ", &dummy);
-            sscanf(ptr, "%s", c);
-            name_len(c , 43);
-            sprintf(out_character -> name, "player_%s", c);
+            name_len(ptr , 43);
+            sprintf(out_character -> name, "player_%s", ptr);
         } else if (str_cmp("lvl", ptr) == 0) {
             ptr = tokenize(NULL, ",: ", &dummy);
             sscanf(ptr, "%d", &(out_character -> level));
