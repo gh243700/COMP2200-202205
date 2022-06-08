@@ -1,7 +1,7 @@
 #include "character_deserializer.h"
 #include <stdio.h>
 
-#define LENGTH (1024)
+#define LENGTH (2048)
 
 char* tokenize(char* src_or_null, const char* dilm, char** out_end);
 void deserialize_character_v1(character_v3_t* out_character, char* src);
