@@ -50,7 +50,7 @@ void deserialize_character_v3(character_v3_t* out_character, char* src)
     ptr = tokenize(NULL, "\n", &temp);
 
     ptr = tokenize(ptr, " |", &dummy);
-    sprintf(out_character -> name, "%s", ptr);
+    sprintf(out_character -> name, "%50s", ptr);
 
     ptr = tokenize(NULL, " |", &dummy);
     sscanf(ptr, "%d", &(out_character -> level));   
@@ -100,7 +100,7 @@ void deserialize_character_v3(character_v3_t* out_character, char* src)
     i = 0;
     while(ptr != NULL) {
         ptr = tokenize(ptr, " |", &dummy);
-        sprintf(out_character -> minions[i].name, "%s", ptr);
+        sprintf(out_character -> minions[i].name, "%50s", ptr);
         ptr = tokenize(NULL, " |", &dummy);
         sscanf(ptr, "%d", &(out_character -> minions[i].health));
         ptr = tokenize(NULL, " |", &dummy);
@@ -122,7 +122,7 @@ void deserialize_character_v2(character_v3_t* out_character, char* src)
     ptr = tokenize(NULL, "\n", &dummy);
 
     ptr = tokenize(ptr, ", ", &dummy);
-    sprintf(out_character -> name, "%s", ptr);
+    sprintf(out_character -> name, "%50s", ptr);
 
     ptr = tokenize(NULL, ", ", &dummy);
     sscanf(ptr, "%d", &(out_character -> level));
