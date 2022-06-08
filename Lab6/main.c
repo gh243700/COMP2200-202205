@@ -13,7 +13,7 @@ int main(void)
 
     version = get_character("Lab6_Resources\\Superman_v1.txt", &superman_v1);
     assert(version == 1);
-    assert(strcmp(superman_v1.name, "player_15") == 0);
+    assert(strcmp(superman_v1.name, "player_1522222222222222222222222222222222222222222") == 0);
     assert(superman_v1.level == 10);
     assert(superman_v1.health == 100);
     assert(superman_v1.mana == 25);

@@ -8,7 +8,7 @@ void deserialize_character_v1(character_v3_t* out_character, char* src);
 void deserialize_character_v2(character_v3_t* out_character, char* src);
 void deserialize_character_v3(character_v3_t* out_character, char* src);
 int str_cmp(char* str1, char* str2);
-void name_len(char* src);
+void name_len(char* src, size_t len);
 
 int get_character(const char* filename, character_v3_t* out_character)
 {
@@ -51,7 +51,7 @@ void deserialize_character_v3(character_v3_t* out_character, char* src)
     ptr = tokenize(NULL, "\n", &temp);
 
     ptr = tokenize(ptr, " |", &dummy);
-    name_len(ptr);
+    name_len(ptr, 50);
     sprintf(out_character -> name, "%s", ptr);
 
     ptr = tokenize(NULL, " |", &dummy);
@@ -102,7 +102,7 @@ void deserialize_character_v3(character_v3_t* out_character, char* src)
     i = 0;
     while(ptr != NULL) {
         ptr = tokenize(ptr, " |", &dummy);
-        name_len(ptr);
+        name_len(ptr, 50);
         sprintf(out_character -> minions[i].name, "%s", ptr);
         ptr = tokenize(NULL, " |", &dummy);
         sscanf(ptr, "%d", &(out_character -> minions[i].health));
@@ -122,10 +122,10 @@ void deserialize_character_v2(character_v3_t* out_character, char* src)
     unsigned int magic_resistance;
     char* dummy;
     ptr = tokenize(src, "\n", &dummy);
+    name_len(ptr, 50);
     ptr = tokenize(NULL, "\n", &dummy);
 
     ptr = tokenize(ptr, ", ", &dummy);
-    name_len(ptr);
     sprintf(out_character -> name, "%s", ptr);
 
     ptr = tokenize(NULL, ", ", &dummy);
@@ -173,10 +173,11 @@ void deserialize_character_v1(character_v3_t* out_character, char* src)
 
     for (i = 0; i< 8; i++) {
         if (str_cmp("id", ptr) == 0) {
-            int id;
+            char* c;
             ptr = tokenize(NULL, ",: ", &dummy);
-            sscanf(ptr, "%d", &id);
-            sprintf(out_character -> name, "player_%d", id);
+            sscanf(ptr, "%s", c);
+            name_len(c , 43);
+            sprintf(out_character -> name, "player_%s", c);
         } else if (str_cmp("lvl", ptr) == 0) {
             ptr = tokenize(NULL, ",: ", &dummy);
             sscanf(ptr, "%d", &(out_character -> level));
@@ -212,6 +213,18 @@ void deserialize_character_v1(character_v3_t* out_character, char* src)
     out_character -> minion_count = 0; 
 }
 
+void name_len(char* src, size_t len)
+{
+    char* ptr = src;
+    while (*ptr != '\0') {
+        if (ptr - src >= len) {
+            *ptr = '\0';
+            break;
+        }
+        ptr++;
+    }
+}
+
 int str_cmp(char* str1, char* str2) 
 {
     while(*str1 == *str2 && *str1 != '\0') {
@@ -220,18 +233,6 @@ int str_cmp(char* str1, char* str2)
     }
 
     return *str1 - *str2;
-}
-
-void name_len(char* src)
-{
-    char* ptr = src;
-    while (*ptr != '\0') {
-        if (ptr - src >= 50) {
-            *ptr = '\0';
-            break;
-        }
-        ptr++;
-    }
 }
 
 char* tokenize(char* src_or_null, const char* dilm, char** out_end) {
