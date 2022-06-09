@@ -199,8 +199,8 @@ static char get_escape(const char c)
         break;
     case '\"':
         escape = '\"';
-    break;
-    default :
+        break;
+    default:
         escape = ERROR_CODE_INVALID_FORMAT;
         break;
     }
