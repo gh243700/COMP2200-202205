@@ -50,7 +50,7 @@ label1:
         set2 = *(argv + 2);
     }
 
-    if(!refine_set(&length1, refined_set1, set1, FALSE, &error_code) || !refine_set(&length2, refined_set2, set2, FALSE, &error_code)) {
+    if (!refine_set(&length1, refined_set1, set1, FALSE, &error_code) || !refine_set(&length2, refined_set2, set2, FALSE, &error_code)) {
         return error_code;
     }
     
@@ -170,38 +170,38 @@ static char get_escape(const char c)
 {
     char escape;
     switch (c) {
-        case '\\':
-            escape = '\\';
+    case '\\':
+        escape = '\\';
         break;
-        case 'a':
-            escape = '\a';
+    case 'a':
+        escape = '\a';
         break;
-        case 'b':
-            escape = '\b';
+    case 'b':
+        escape = '\b';
         break;
-        case 'f':
-            escape = '\f';
+    case 'f':
+        escape = '\f';
         break;
-        case 'n':
-            escape = '\n';
+    case 'n':
+        escape = '\n';
         break;
-        case 'r':
-            escape = '\r';
+    case 'r':
+        escape = '\r';
         break;
-        case 't':
-            escape = '\t';
+    case 't':
+        escape = '\t';
         break;
-        case 'v':
-            escape = '\v';
+    case 'v':
+        escape = '\v';
         break;
-        case '\'':
-            escape = '\'';
+    case '\'':
+        escape = '\'';
         break;
-        case '\"':
-            escape = '\"';
-        break;
-        default :
-            escape = ERROR_CODE_INVALID_FORMAT;
+    case '\"':
+        escape = '\"';
+    break;
+    default :
+        escape = ERROR_CODE_INVALID_FORMAT;
         break;
     }
     return escape;
