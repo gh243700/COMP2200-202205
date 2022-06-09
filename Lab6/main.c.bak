@@ -30,7 +30,7 @@ int main(void)
     
     version = get_character("Lab6_Resources\\Batman_v2.txt", &batman_v2);
     assert(version == 2);
-    printf("%s\n", batman_v2.name);
+    printf("%s\n");
     assert(strcmp(batman_v2.name, "Batman_v2") == 0);
     assert(batman_v2.level == 25);
     assert(batman_v2.health == 130);

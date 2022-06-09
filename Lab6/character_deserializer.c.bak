@@ -188,7 +188,7 @@ void get_character_v2(FILE* fp, character_v3_t* out_character)
     sscanf(cp, "%d", &magic_resistance);
     cp = strtok(NULL, ",");
     sscanf(cp, "%d", &(out_character->health));
-    cp = strtok(NULL, ",");
+        cp = strtok(NULL, ",");
     sscanf(cp, "%d", &(out_character->mana));
     
     out_character->leadership = out_character->level / 10;

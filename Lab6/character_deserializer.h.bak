@@ -25,7 +25,7 @@ typedef struct {
     int armour;
     int evasion;
     int leadership;
-    size_t minion_count;
+    size_t minion_count = 0;
     elemental_resistance_t elemental_resistance;
     minion_t minions[3];
 } character_v3_t;
