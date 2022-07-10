@@ -2,22 +2,6 @@
 
 int compare_pos(const void* a, const void* b);
 
-
-void malloc_push(char** pa_stack, char start, size_t* stack_item_count, size_t index)
-{
-    char* ptr = *pa_stack;
-    if (index == *stack_item_count) {
-        char* temp = realloc(ptr, *stack_item_count * sizeof(char) * 2);
-        if (temp != NULL) {
-            *pa_stack = temp;
-            *stack_item_count *= 2;     
-        } else {
-            return;
-        }
-    }
-    ptr[index] = start;
-}
-
 size_t get_matching_parentheses(parenthesis_t* out_parentheses, size_t max_size, const char* str)
 {
     size_t stack_item_count;
@@ -137,6 +121,20 @@ size_t get_matching_parentheses(parenthesis_t* out_parentheses, size_t max_size,
     return result;
 }
 
+void malloc_push(char** pa_stack, char start, size_t* stack_item_count, size_t index)
+{
+    char* ptr = *pa_stack;
+    if (index == *stack_item_count) {
+        char* temp = realloc(ptr, *stack_item_count * sizeof(char) * 2);
+        if (temp != NULL) {
+            *pa_stack = temp;
+            *stack_item_count *= 2;     
+        } else {
+            return;
+        }
+    }
+    ptr[index] = start;
+}
 
 void malloc_push_position(size_t** pa_stack_index, size_t start, size_t* stack_item_count, size_t index)
 {
@@ -152,15 +150,13 @@ void malloc_push_position(size_t** pa_stack_index, size_t start, size_t* stack_i
     ptr[index] = start;
 }
 
-
-char pop(char* pa_stack, size_t index) 
+int compare_pos(const void* a, const void* b)
 {
-    char* ptr = pa_stack;
+    const parenthesis_t* w0 = (parenthesis_t*)a;
+    const parenthesis_t* w1 = (parenthesis_t*)b;
     
-    assert(index > 0);
-    return ptr[--index];
+    return w0->opening_index - w1->opening_index;
 }
-
 
 size_t pop_position(size_t* pa_stack_index, size_t index) 
 {
@@ -170,11 +166,10 @@ size_t pop_position(size_t* pa_stack_index, size_t index)
     return ptr[--index];
 }
 
-
-int compare_pos(const void* a, const void* b)
+char pop(char* pa_stack, size_t index) 
 {
-    const parenthesis_t* w0 = (parenthesis_t*)a;
-    const parenthesis_t* w1 = (parenthesis_t*)b;
+    char* ptr = pa_stack;
     
-    return w0->opening_index - w1->opening_index;
+    assert(index > 0);
+    return ptr[--index];
 }
