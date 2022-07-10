@@ -1,5 +1,4 @@
 #include "parentheses.h"
-#include <stdio.h>
 
 #define PARENTHESES_MAX_SIZE (50)
 
