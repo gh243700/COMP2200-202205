@@ -1,6 +1,24 @@
 #include "parentheses.h"
+#include <stdio.h>
 
 int compare_pos(const void* a, const void* b);
+size_t get_matching_parentheses(parenthesis_t* out_parentheses, size_t max_size, const char* str);
+void malloc_push(char** pa_stack, char start, size_t* stack_item_count, size_t index);
+
+void malloc_push(char** pa_stack, char start, size_t* stack_item_count, size_t index)
+{
+    char* ptr = *pa_stack;
+    if (index == *stack_item_count) {
+        char* temp = realloc(ptr, *stack_item_count * sizeof(char) * 2);
+        if (temp != NULL) {
+            *pa_stack = temp;
+            *stack_item_count *= 2;     
+        } else {
+            return;
+        }
+    }
+    ptr[index] = start;
+}
 
 size_t get_matching_parentheses(parenthesis_t* out_parentheses, size_t max_size, const char* str)
 {
@@ -121,20 +139,7 @@ size_t get_matching_parentheses(parenthesis_t* out_parentheses, size_t max_size,
     return result;
 }
 
-void malloc_push(char** pa_stack, char start, size_t* stack_item_count, size_t index)
-{
-    char* ptr = *pa_stack;
-    if (index == *stack_item_count) {
-        char* temp = realloc(ptr, *stack_item_count * sizeof(char) * 2);
-        if (temp != NULL) {
-            *pa_stack = temp;
-            *stack_item_count *= 2;     
-        } else {
-            return;
-        }
-    }
-    ptr[index] = start;
-}
+
 
 void malloc_push_position(size_t** pa_stack_index, size_t start, size_t* stack_item_count, size_t index)
 {
