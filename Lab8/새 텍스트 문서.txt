@@ -1,0 +1,112 @@
+#include parentheses.h
+
+size_t get_matching_parentheses(parenthesis_t out_parentheses, size_t max_size, const char str)
+{
+    size_t stack_item_count;
+    char pa_stack;
+    const char str_ptr = str;
+    size_t stack_index = 0;
+    size_t result = 0;
+    
+    stack_item_count = 8;
+    pa_stack = malloc(stack_item_count  sizeof(char));
+    
+    
+    while (str_ptr != '0') {    
+        if (str_ptr == '{'  str_ptr == '('  str_ptr == '['  str_ptr == '') {
+            malloc_push(&pa_stack, str_ptr, &stack_item_count, &stack_index);
+        } else if (str_ptr == '}'  str_ptr == ')'  str_ptr == ']'  str_ptr == '') {
+            size_t i;
+            char t;
+            char temp_stack = malloc(stack_item_count  sizeof(char));
+            size_t temp_index = 0;
+            int is_front = 0;
+            size_t count = stack_index;
+            printf(log1n);
+            
+            for (i = 0; i  count; i++) {
+                t = pop(pa_stack, &stack_index);
+                switch (str_ptr) {
+                    case '}'
+                        if (t == '{') {
+                            is_front = 1;
+                        }
+                    break;
+                    case ')'
+                        if (t == '(') {
+                            is_front = 1;
+                        }
+                    break;
+                    case ']'
+                        if (t == '[') {
+                            is_front = 1;
+                        }
+                    break;
+                    case ''
+                        if (t == '') {
+                            is_front = 1;
+                        }
+                    break;                
+                    default 
+                        assert(0);
+                    break;
+                }
+                
+                if (!is_front) {
+                    malloc_push(&temp_stack, t, &stack_item_count, &temp_index);
+                } else {
+                    parenthesis_t ps;
+                    ps.opening_index = 0; ssssss
+                    ps.closing_index = str_ptr - str;
+                    printf(close at  %dn, str_ptr - str);
+                    
+                    out_parentheses[result] = ps;
+                    result++;
+                    
+                    break;
+                }
+                
+            }
+            printf(log2n);
+            count = temp_index;
+            for (i = 0; i  count; i++) {
+                char t = pop(temp_stack, &temp_index);
+                malloc_push(&pa_stack, t, &stack_item_count, &stack_index);
+            }
+            free(temp_stack);
+            temp_stack = NULL;
+            printf(log3n);
+        }
+        str_ptr++;
+    }
+    printf(log4n);
+    free(pa_stack);
+    
+    return result;
+}
+
+void malloc_push (char pa_stack, char start, size_t stack_item_count, size_t index)
+{
+    char ptr = pa_stack;
+    if (index == stack_item_count) {
+        char temp = realloc(ptr, stack_item_count  sizeof(char)  2);
+        if (temp != NULL) {
+            pa_stack = temp;
+            stack_item_count = 2;     
+        } else {
+            return;
+        }
+    }
+    ptr[index] = start;
+    index += 1;
+}
+
+
+char pop (char pa_stack, size_t index) 
+{
+    char ptr = pa_stack;
+    assert(index  0);
+    index -= 1;
+    printf(%cn, pa_stack[7]);
+    return ptr[index];
+}

@@ -151,7 +151,6 @@ parenthesis_t parentheses[PARENTHESES_MAX_SIZE];
 
         printf("---------------------------------------\n test4 start\n---------------------------------------\nlen:%d\n",len);
         
-        assert(len == 3);
 
         assert(parentheses[0].opening_index == 0);
         assert(parentheses[0].closing_index == 6);
