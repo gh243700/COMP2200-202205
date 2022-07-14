@@ -215,7 +215,7 @@ int main(void)
             assert(arr_int[0] == 10000004);
         }
         
-        printf("finnnnn\n");
+        printf("test\n");
     }
     return 0;
 }
