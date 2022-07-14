@@ -11,7 +11,7 @@
 
 #define MIN(x, y) (((x) > (y)) ? (y) : (x))
 
-#define ABS(x) (((x) >= 0) ? (x) : (x) * -1)
+#define ABS(x) (((x) >= 0) ? (x) : (unsigned int)((x) * -1))
 
 #define RANGE(curr, min, max) for((curr) = (min); (curr) <= (max); (curr)++)
 
