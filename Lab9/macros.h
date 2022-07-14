@@ -19,8 +19,8 @@
 
 #define SET(ary, start, count, value)\
     do {                                        \
-        size_t i;                               \
-        size_t c = (count);                     \
+        int i;                               \
+        int c = (count);                     \
         for(i = 0; i < c; i++) {                \
             *((ary) + (start) + i) = (value);   \
         }                                       \
