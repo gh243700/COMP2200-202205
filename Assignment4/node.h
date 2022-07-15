@@ -4,6 +4,7 @@
 typedef struct node {
     char* key;
     int value;
+    size_t key_len;
     struct node* next;
 } node_t;
 
