@@ -11,7 +11,7 @@ typedef struct node {
 } node_t;
 
 typedef struct todo_list {
-    node_t** node;
+    node_t* node;
     size_t count;
     size_t max_size;
     struct todo_list* p;

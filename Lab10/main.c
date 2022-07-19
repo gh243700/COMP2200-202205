@@ -16,7 +16,6 @@ int main(void)
 
 void test1(void) {
     todo_list_t todo_list = init_todo_list(9);
-
     assert(is_empty(&todo_list));
 
     assert(add_todo(&todo_list, 10, "A"));
