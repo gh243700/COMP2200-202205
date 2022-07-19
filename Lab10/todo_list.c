@@ -27,6 +27,7 @@ void finalize_todo_list(todo_list_t* todo_list)
         free(pa_list_p);
         pa_list_p = pa_list_next_p;
     }
+    free(pa_list_pp);
     free(todo_list -> p);
 }
 
