@@ -31,7 +31,6 @@ bool add_todo(todo_list_t* todo_list, const int32_t priority, const char* task)
 {
     node_t* node_p = todo_list->node;
     node_t* pa_new_node;
-    size_t task_len;
 
     if (todo_list->count >= todo_list->max_size) {
         return false;
