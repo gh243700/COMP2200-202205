@@ -142,13 +142,13 @@ void destroy(hashmap_t* hashmap)
     size_t i;
     
     for (i = 0; i < hashmap->length; i++) {
-         pa_node = *(plist + i);
-         while (pa_node != NULL) {
-              node_t* next = pa_node->next;
-              free(pa_node->key);
-              free(pa_node);
-              pa_node = next;
-          }
+        pa_node = *(plist + i);
+        while (pa_node != NULL) {
+            node_t* next = pa_node->next;
+            free(pa_node->key);
+            free(pa_node);
+            pa_node = next;
+        }
     }
 
     free(plist);
