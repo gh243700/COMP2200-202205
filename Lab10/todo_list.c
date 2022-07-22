@@ -38,7 +38,7 @@ bool add_todo(todo_list_t* todo_list, const int32_t priority, const char* task)
     
     pa_new_node = malloc(sizeof(node_t));
     strncpy(pa_new_node->task, task, LENGTH);
-    *((pa_new_node->task) + LENGTH - 1) = '\0';
+    *(pa_new_node->task + LENGTH - 1) = '\0';
     pa_new_node->priority = priority;    
 
     if (node_p == NULL) {
