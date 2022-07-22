@@ -1,6 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <stddef.h>
+
 typedef struct node {
     char* key;
     int value;
