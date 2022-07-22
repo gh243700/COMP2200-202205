@@ -40,7 +40,7 @@ bool add_todo(todo_list_t* todo_list, const int32_t priority, const char* task)
     
     pa_new_node = malloc(sizeof(node_t));
     task_len = strlen(task);
-    //pa_new_node -> task = malloc(sizeof(char) * task_len + 1);
+    pa_new_node -> task = malloc(sizeof(char) * task_len + 1);
     memcpy(pa_new_node -> task, task, sizeof(char) * task_len + 1);
     pa_new_node -> priority = priority;    
 

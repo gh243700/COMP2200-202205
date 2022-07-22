@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 typedef struct node {
-    char task[512];
+    char* task;
     int32_t priority;
     struct node* next;
 } node_t;
