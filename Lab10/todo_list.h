@@ -4,8 +4,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define LENGTH (512)
+
 typedef struct node {
-    char task[512];
+    char task[LENGTH];
     int32_t priority;
     struct node* next;
 } node_t;
