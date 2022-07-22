@@ -20,7 +20,7 @@ void finalize_todo_list(todo_list_t* todo_list)
     node_t* pa_list_next_p;
     
     while (pa_list_p != NULL) {
-        free(pa_list_p -> task);
+        //free(pa_list_p -> task);
         pa_list_next_p = pa_list_p -> next;
         free(pa_list_p);
         pa_list_p = pa_list_next_p;
@@ -39,9 +39,12 @@ bool add_todo(todo_list_t* todo_list, const int32_t priority, const char* task)
     }
     
     pa_new_node = malloc(sizeof(node_t));
-    task_len = strlen(task);
+    printf("sss\n");
+    //task_len = strlen(task);
     //pa_new_node -> task = malloc(sizeof(char) * task_len + 1);
-    memcpy(pa_new_node -> task, task, sizeof(char) * task_len + 1);
+    strncpy(pa_new_node -> task, task, 512);
+    *((pa_new_node -> task) + 511) = '\0';
+    printf("%s\n", pa_new_node -> task);
     pa_new_node -> priority = priority;    
 
     if (node_p == NULL) {
@@ -82,7 +85,7 @@ bool complete_todo(todo_list_t* todo_list)
     }
 
     pa_node = todo_list -> node;
-    free(pa_node -> task); 
+    //free(pa_node -> task); 
     pa_node_next = pa_node -> next;
     free(pa_node);
     todo_list -> node = pa_node_next;

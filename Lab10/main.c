@@ -64,7 +64,8 @@ void test1(void) {
 
     assert(is_empty(&todo_list));
     assert(!complete_todo(&todo_list));
-
+    printf("a\n");
     finalize_todo_list(&todo_list);
+    printf("b\n");
 }
 
