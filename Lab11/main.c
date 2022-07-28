@@ -19,7 +19,7 @@ int main(void)
 {
     {
         char arr[50] = "userid1@naver.com";
-        hide_Info(arr, 17, 1);
+        hide(arr, 17, 1);
         printf("%s\n", arr);
     }
 

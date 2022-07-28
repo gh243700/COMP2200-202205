@@ -67,8 +67,8 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     *(user_or_null->email + email_new_length) = '\0';
     
 #ifdef RELEASE
-    hide_Info(email_bak, email_bak_length, 0);
-    hide_Info(email_new, email_new_length, 0);
+    hide(email_bak, email_bak_length, 0);
+    hide(email_new, email_new_length, 0);
 #endif
     
     char msg[150];
@@ -103,8 +103,8 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     *(user_or_null->password + password_new_length) = '\0';
     
 #ifdef RELEASE
-    hide_Info(password_bak, password_bak_length, 1);
-    hide_Info(password_new, password_new_length, 1);
+    hide(password_bak, password_bak_length, 1);
+    hide(password_new, password_new_length, 1);
 #endif
     
     char msg[150];
