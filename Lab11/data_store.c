@@ -66,7 +66,7 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     strncpy(user_or_null->email, email, email_new_length);
     *(user_or_null->email + email_new_length) = '\0';
     
-    #ifndef RELEASE
+    #ifdef RELEASE
     hide_Info(email_bak, email_bak_length, 0);
     hide_Info(email_new, email_new_length, 0);
     #endif
@@ -102,7 +102,7 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     strncpy(user_or_null -> password, password, password_new_length);
     *(user_or_null->password + password_new_length) = '\0';
     
-    #ifndef RELEASE
+    #ifdef RELEASE
     hide_Info(password_bak, password_bak_length, 1);
     hide_Info(password_new, password_new_length, 1);
     #endif
