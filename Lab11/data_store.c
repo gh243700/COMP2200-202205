@@ -73,7 +73,7 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     
     char msg[150];
     size_t msg_length;
-    FILE* fp = fopen("log.txt", "a+");
+    FILE* fp = fopen("log.txt", "a");
     sprintf(msg, "TRACE: User %d updated email from \"%s\" to \"%s\"\r\n", user_or_null->id, email_bak, email_new);
     msg_length = strlen(msg);
     fwrite(msg, sizeof(char), msg_length, fp);
@@ -109,7 +109,7 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     
     char msg[150];
     size_t msg_length;
-    FILE* fp = fopen("log.txt", "a+");
+    FILE* fp = fopen("log.txt", "a");
     sprintf(msg, "TRACE: User %d updated password from \"%s\" to \"%s\"\r\n", user_or_null->id, password_bak, password_new);
     msg_length = strlen(msg);
     fwrite(msg, sizeof(char), msg_length, fp);
