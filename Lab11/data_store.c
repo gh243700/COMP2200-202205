@@ -16,7 +16,7 @@ user_t* get_user_by_id_or_null(user_t** users_or_null, size_t id)
     user_t* result = NULL;
     while (*users_ptr != NULL) {
         user_t* user = *users_ptr;
-        if (user -> id == id) {
+        if (user->id == id) {
             result = user;
             break;
         }
@@ -36,7 +36,7 @@ user_t* get_user_by_username_or_null(user_t** users_or_null, const char* usernam
 
     while (*users_ptr != NULL) {
         user_t* user = *users_ptr;
-        if (strncmp(user -> username, username, LENGTH) == 0) {
+        if (strncmp(user->username, username, LENGTH) == 0) {
             result = user;
             break;
         }
@@ -57,13 +57,13 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     char email_bak[LENGTH];
     char email_new[LENGTH];
 
-    strncpy(email_bak, user_or_null -> email, email_bak_length);
+    strncpy(email_bak, user_or_null->email, email_bak_length);
     *(email_bak + email_bak_length) = '\0';
     
     strncpy(email_new, email, email_new_length);
     *(email_new + email_new_length) = '\0';
     
-    strncpy(user_or_null -> email, email, email_new_length);
+    strncpy(user_or_null->email, email, email_new_length);
     *(user_or_null->email + email_new_length) = '\0';
     
     #ifndef RELEASE
@@ -74,7 +74,7 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     char msg[150];
     size_t msg_length;
     FILE* fp = fopen("log.txt", "a+");
-    sprintf(msg, "TRACE: User %d updated email from \"%s\" to \"%s\"\r\n", user_or_null -> id, email_bak, email_new);
+    sprintf(msg, "TRACE: User %d updated email from \"%s\" to \"%s\"\n", user_or_null->id, email_bak, email_new);
     msg_length = strlen(msg);
     fwrite(msg, sizeof(char), msg_length, fp);
     fclose(fp);
@@ -93,7 +93,7 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     char password_bak[LENGTH];
     char password_new[LENGTH];
 
-    strncpy(password_bak, user_or_null -> password, password_bak_length);
+    strncpy(password_bak, user_or_null->password, password_bak_length);
     *(password_bak + password_bak_length) = '\0';
     
     strncpy(password_new, password, password_new_length);
@@ -110,7 +110,7 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     char msg[150];
     size_t msg_length;
     FILE* fp = fopen("log.txt", "a+");
-    sprintf(msg, "TRACE: User %d updated password from \"%s\" to \"%s\"\r\n", user_or_null -> id, password_bak, password_new);
+    sprintf(msg, "TRACE: User %d updated password from \"%s\" to \"%s\"\n", user_or_null->id, password_bak, password_new);
     msg_length = strlen(msg);
     fwrite(msg, sizeof(char), msg_length, fp);
     fclose(fp);
