@@ -4,7 +4,7 @@
 #include "stdlib.h"
 #include "stdio.h"
 
-extern inline void hide_Info(char* c1, size_t str_len, int mode);
+extern inline void hide(char* c, size_t str_len, int mode);
 
 user_t* get_user_by_id_or_null(user_t** users_or_null, size_t id)
 {
