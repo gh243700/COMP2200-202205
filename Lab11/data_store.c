@@ -58,7 +58,7 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     strncpy(user_or_null -> email, email, email_new_length);
     *(user_or_null -> email + email_new_length) = '\0';
     
-    #if !RELEASE
+    #ifndef RELEASE
     hide_Info(email_bak, email_bak_length, 0);
     hide_Info(email_new, email_new_length, 0);
     #endif
