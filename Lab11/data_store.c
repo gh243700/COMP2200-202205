@@ -94,7 +94,7 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     strncpy(user_or_null -> password, password, password_new_length);
     *(user_or_null -> password + password_new_length) = '\0';
     
-    #if !RELEASE
+    #ifndef RELEASE
     hide_Info(password_bak, password_bak_length, 1);
     hide_Info(password_new, password_new_length, 1);
     #endif
