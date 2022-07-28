@@ -47,6 +47,7 @@ int main(void)
 
     assert(!update_password(users, 20, "randompassword"));
 
+
     const char* new_email = "n@gmail.com";
     const char* new_password = "n";
 
@@ -55,7 +56,7 @@ int main(void)
 
     new_email = "ne@gmail.com";
     new_password = "ne";
-
+    printf("aaaa\n");
     assert(update_email(users, 2, new_email));
     assert(update_password(users, 2, new_password));
 

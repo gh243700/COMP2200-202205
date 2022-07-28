@@ -8,6 +8,10 @@ extern inline void hide_Info(char* c1, size_t strlen, int mode);
 
 user_t* get_user_by_id_or_null(user_t** users_or_null, size_t id)
 {
+    if (users_or_null == NULL) {
+        return NULL;
+    }
+
     user_t** users_ptr = users_or_null;
     user_t* result = NULL;
     while (*users_ptr != NULL) {
@@ -23,6 +27,10 @@ user_t* get_user_by_id_or_null(user_t** users_or_null, size_t id)
 
 user_t* get_user_by_username_or_null(user_t** users_or_null, const char* username)
 {
+    if (users_or_null == NULL) {
+        return NULL;
+    }
+
     user_t** users_ptr = users_or_null;
     user_t* result = NULL;
 
@@ -56,7 +64,7 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     *(email_new + email_new_length) = '\0';
     
     strncpy(user_or_null -> email, email, email_new_length);
-    *(user_or_null -> email + email_new_length) = '\0';
+    *(user_or_null->email + email_new_length) = '\0';
     
     #ifndef RELEASE
     hide_Info(email_bak, email_bak_length, 0);
@@ -92,7 +100,7 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     *(password_new + password_new_length) = '\0';
     
     strncpy(user_or_null -> password, password, password_new_length);
-    *(user_or_null -> password + password_new_length) = '\0';
+    *(user_or_null->password + password_new_length) = '\0';
     
     #ifndef RELEASE
     hide_Info(password_bak, password_bak_length, 1);

@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-#define LENGTH (50)
+#define LENGTH (51)
 
 typedef struct user {
     size_t id;
