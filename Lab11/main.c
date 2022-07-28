@@ -13,7 +13,7 @@
 user_t** get_test_users_malloc();
 void destroy_users(user_t** users);
 
-extern inline void hide_Info(char* c1, size_t strlen, int mode);
+extern inline void hide_Info(char* c1, size_t str_len, int mode);
 
 int main(void)
 {

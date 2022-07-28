@@ -13,15 +13,15 @@ bool update_email(user_t** users_or_null, size_t id, const char* email);
 
 bool update_password(user_t** users_or_null, size_t id, const char* password);
 
-inline void hide_Info(char* c1, size_t strlen, int mode) 
+inline void hide_Info(char* c1, size_t str_len, int mode) 
 {
-    size_t length = strlen;
+    size_t length = str_len;
     
     if (mode == 0) {
         length = 0;
         size_t i;
         char* ptr = c1;
-        for (i = 0; i < strlen; i++) {
+        for (i = 0; i < str_len; i++) {
             if (*ptr == '@') {
                 break;
             }
