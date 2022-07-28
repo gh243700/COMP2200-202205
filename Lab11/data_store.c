@@ -52,7 +52,7 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
         return false;
     }
 
-    size_t email_bak_length = strlen(user_or_null -> email);
+    size_t email_bak_length = strlen(user_or_null->email);
     size_t email_new_length = strlen(email);
     char email_bak[LENGTH];
     char email_new[LENGTH];
@@ -66,10 +66,10 @@ bool update_email(user_t** users_or_null, size_t id, const char* email)
     strncpy(user_or_null->email, email, email_new_length);
     *(user_or_null->email + email_new_length) = '\0';
     
-    #ifdef RELEASE
+#ifdef RELEASE
     hide_Info(email_bak, email_bak_length, 0);
     hide_Info(email_new, email_new_length, 0);
-    #endif
+#endif
     
     char msg[150];
     size_t msg_length;
@@ -88,7 +88,7 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
         return false;
     }
 
-    size_t password_bak_length = strlen(user_or_null -> password);
+    size_t password_bak_length = strlen(user_or_null->password);
     size_t password_new_length = strlen(password);
     char password_bak[LENGTH];
     char password_new[LENGTH];
@@ -99,13 +99,13 @@ bool update_password(user_t** users_or_null, size_t id, const char* password)
     strncpy(password_new, password, password_new_length);
     *(password_new + password_new_length) = '\0';
     
-    strncpy(user_or_null -> password, password, password_new_length);
+    strncpy(user_or_null->password, password, password_new_length);
     *(user_or_null->password + password_new_length) = '\0';
     
-    #ifdef RELEASE
+#ifdef RELEASE
     hide_Info(password_bak, password_bak_length, 1);
     hide_Info(password_new, password_new_length, 1);
-    #endif
+#endif
     
     char msg[150];
     size_t msg_length;

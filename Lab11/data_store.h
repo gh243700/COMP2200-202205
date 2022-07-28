@@ -13,7 +13,8 @@ bool update_email(user_t** users_or_null, size_t id, const char* email);
 
 bool update_password(user_t** users_or_null, size_t id, const char* password);
 
-inline void hide_Info(char* c1, size_t strlen, int mode) {
+inline void hide_Info(char* c1, size_t strlen, int mode) 
+{
     size_t length = strlen;
     
     if (mode == 0) {
